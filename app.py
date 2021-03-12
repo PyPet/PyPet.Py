@@ -1,11 +1,28 @@
 import os, datetime, time, pygame
 from threading import Thread
-
+alarms = {
+    #"food1": "21:00",
+    "food": "9:48",
+    "power": "True"
+}
 clear = lambda: os.system('cls')
+def tfdt():
+    while True:
+        lcltime = datetime.datetime.now().strftime('%H:%M')
+        if lcltime == alarms["food"]:
+            pygame.mixer.init()
+            dir_path = os.path.dirname(os.path.abspath(__file__))
+            sound = pygame.mixer.Sound(os.path.join(dir_path, 'dog1.wav'))
+            sound.play()
+            break
+        else:
+            time.sleep(10)
+tfdtThread = Thread(target=tfdt)
 def printDog(name):
     fileDog = open("dogs/"+name+".txt", "r")
     for line in fileDog.readlines():
-        print(line.replace('\n', ''))
+        line2 = str(line.replace('\n', ''))
+        print(line2)
     fileDog.close()
 def actions(name):
     clear()
@@ -18,28 +35,21 @@ def actions(name):
         input()
         clear()
         printDog("dogEat1")
+    elif(str(name).lower()=="config"):
+        print("Configuracion \nActivar/Desactivar alarmas = alarms.<True/False>")
+        opcinoncofig = input()
+        if (str(opcinoncofig).lower().split(".")[0] == "alarms"):
+            alarms["power"] = str(opcinoncofig).lower().split(".")[1]
     
     elif(str(name).lower() == "exit"):
         clear()
-        exit()
+        tfdtThread.do_run = False
+        clear()
+        sys.exit("Adios :D")
+        
     else:
         print("ERROR: El comando no es valido")
-alarms = {
-    "food": "21:00",
-    #"food": "20:26",
-    "status": True
-}
-def tfdt():
-    while alarms["status"] == True:
-        lcltime = datetime.datetime.now().strftime('%H:%M')
-        if lcltime == alarms["food"]:
-            pygame.mixer.init()
-            dir_path = os.path.dirname(os.path.abspath(__file__))
-            sound = pygame.mixer.Sound(os.path.join(dir_path, 'dog1.wav'))
-            sound.play()
-            break
-        else:
-            time.sleep(10)
+
 
 
 def onStart():
@@ -64,7 +74,7 @@ def start():
     print("\nPara abrir, pulsa ENTER")
     input()
     clear()
-    Thread(target=tfdt).start()
+    tfdtThread.start()
     onStart()
 start()
 
