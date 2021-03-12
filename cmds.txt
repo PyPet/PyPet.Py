@@ -1,2 +1,3 @@
 Ir a dormir = sleep
 Salir = exit
+Darle de comer = eat

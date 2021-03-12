@@ -1,27 +1,51 @@
-import os
+import os, datetime, time, pygame
+from threading import Thread
+
 clear = lambda: os.system('cls')
+def printDog(name):
+    fileDog = open("dogs/"+name+".txt", "r")
+    for line in fileDog.readlines():
+        print(line.replace('\n', ''))
+    fileDog.close()
 def actions(name):
     clear()
     print("\n \n \n")
     if(str(name).lower() == "sleep"):
-        fileDogSleep = open("dogs/dogSleep.txt", "r")
-        for line in fileDogSleep.readlines():
-            print(line.replace('\n', ''))
-        fileDogSleep.close()
+        printDog("dogSleep")
+    elif(str(name).lower()=="eat"):
+        printDog("dogEat")
+        print("Pulsa ENTER para darle de comer")
+        input()
+        clear()
+        printDog("dogEat1")
+    
     elif(str(name).lower() == "exit"):
         clear()
         exit()
     else:
         print("ERROR: El comando no es valido")
+alarms = {
+    "food": "21:00",
+    #"food": "20:26",
+    "status": True
+}
+def tfdt():
+    while alarms["status"] == True:
+        lcltime = datetime.datetime.now().strftime('%H:%M')
+        if lcltime == alarms["food"]:
+            pygame.mixer.init()
+            dir_path = os.path.dirname(os.path.abspath(__file__))
+            sound = pygame.mixer.Sound(os.path.join(dir_path, 'dog1.wav'))
+            sound.play()
+            break
+        else:
+            time.sleep(10)
+
 
 def onStart():
     clear()
     print("\n \n \n")
-    fileDog1 = open("dogs/dog1.txt", "r")
-    for line in fileDog1.readlines():
-        print(line.replace('\n', ''))
-    fileDog1.close()
-
+    printDog("dog1")
     print("\n\n+-------------+\nLista de comandos: ")
     fileCmds = open("cmds.txt", "r")
     for line in fileCmds.readlines():
@@ -34,5 +58,13 @@ def onStart():
     input()
     clear()
     onStart()
+def start():
+    clear()
+    printDog("title")
+    print("\nPara abrir, pulsa ENTER")
+    input()
+    clear()
+    Thread(target=tfdt).start()
+    onStart()
+start()
 
-onStart()
