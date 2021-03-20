@@ -1,14 +1,17 @@
-import sentry_sdk
-import os
-import datetime
-import time
-import pygame
-import yaml
-import webbrowser
-from threading import Thread
-import threading
-def clear(): lambda: cls
+import sentry_sdk # RAE-PTrue
+import os # Otros
+import datetime # Tiempo
+import time # Tiempo
+import pygame # Sonido
+import yaml # Config
+import webbrowser # Abrir sitios web
+import threading # Importante - Procesos en segundo plano
+def clear(): lambda: cls # Clear - Win: "cls" Linux/Mac: "clear"
 
+# Imports de plugins
+# ej: import <Plugin>
+
+# Fin imports de plugins
 
 # Reporte Automatico de Errores de PTrue (RAE-PTrue)
 sentry_sdk.init(
@@ -17,7 +20,6 @@ sentry_sdk.init(
     environment="beta",
     relase="beta@0.0.1"
 )
-fileYamlConfig = open("./config.yaml", "r")
 
 
 def config(cname, isList):
@@ -37,7 +39,6 @@ alarms = {
     "food": "15:28",
     "power": "True"
 }
-def clear(): return os.system('cls')
 
 
 def playdog(dogWAV):
@@ -62,7 +63,7 @@ def tfdt():
             break
 
 
-tfdtThread = Thread(target=tfdt)
+tfdtThread = threading.Thread(target=tfdt)
 
 
 def printDog(name):
@@ -110,6 +111,7 @@ def actions(name):
         stopped.set()
         clear()
         exit()
+    # Dev Plugins
     elif(str(name).lower() == "mm:calb"):
         print("Gameme es un programador :D")
         webbrowser.open(
@@ -117,6 +119,10 @@ def actions(name):
     elif(str(name).lower() == "mm:sin"):
         print('NO SLEEPING IN THE NETHER')
         webbrowser.open("https://www.youtube.com/watch?v=tF_0X6CKJd8")
+    # Fin Dev Plugins
+    # Llamada de plugins
+    
+    # Fin llamada de plugins
     else:
         print("ERROR: El comando no es valido")
 
