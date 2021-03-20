@@ -13,11 +13,9 @@ def clear(): lambda: cls
 # Reporte Automatico de Errores de PTrue (RAE-PTrue)
 sentry_sdk.init(
     "https://af4bd89b1244444a8039e7a881796ef4@o555373.ingest.sentry.io/5685102",
-
-    # Set traces_sample_rate to 1.0 to capture 100%
-    # of transactions for performance monitoring.
-    # We recommend adjusting this value in production.
-    traces_sample_rate=1.0
+    traces_sample_rate=1.0 
+    environment="beta",
+    relase="beta@0.0.1"
 )
 fileYamlConfig = open("./config.yaml", "r")
 
