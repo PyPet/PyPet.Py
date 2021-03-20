@@ -20,12 +20,16 @@ sentry_sdk.init(
 fileYamlConfig = open("./config.yaml", "r")
 
 
-def config(cname):
+def config(cname, isList):
     configFile = yaml.load(open("./config.yaml", "r"))
     for key, value in configFile.items():
         if (key == cname):
-            newconfig = yaml.load(str(value))
-            return newconfig
+            if (isList):
+                newconfig = yaml.load(str(value))
+                return newconfig
+            else:
+                newconfig = str(value)
+                return newconfig
 
 
 alarms = {
@@ -86,7 +90,7 @@ def actions(name):
             print("Que le vas a dar de comer? (Codigo de la tarjeta de Alimento)")
             toEat = input("Codigo > ").lower()
             noBreak = True
-            for key, value in config("eatCodes").items():
+            for key, value in config("eatCodes", True).items():
                 if (key == toEat and value == 'enabled'):
                     print("Pulsa ENTER para darle de comer")
                     input()
