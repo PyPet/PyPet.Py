@@ -1,24 +1,24 @@
-import sentry_sdk # RAE-PTrue
-import os # Otros
-import datetime # Tiempo
-import time # Tiempo
-import pygame # Sonido
-import yaml # Config
-import webbrowser # Abrir sitios web
-import threading # Importante - Procesos en segundo plano
-def clear(): lambda: cls # Clear - Win: "cls" Linux/Mac: "clear"
-
+import datetime  # Tiempo
+import os  # Otros
+import threading  # Importante - Procesos en segundo plano
+import time  # Tiempo
+import webbrowser  # Abrir sitios web
+import pygame  # Sonido
+import sentry_sdk  # RAE-PTrue
+import yaml  # Config
+def clear(): system("cls")  # Clear - Win: "cls" Linux/Mac: "clear"
 # Imports de plugins
 # ej: import <Plugin>
 
 # Fin imports de plugins
 
+
 # Reporte Automatico de Errores de PTrue (RAE-PTrue)
 sentry_sdk.init(
     "https://af4bd89b1244444a8039e7a881796ef4@o555373.ingest.sentry.io/5685102",
-    traces_sample_rate=1.0 
+    traces_sample_rate=1.0,
     environment="beta",
-    relase="beta@0.0.1"
+    release="beta@0.0.1"
 )
 
 
@@ -121,7 +121,7 @@ def actions(name):
         webbrowser.open("https://www.youtube.com/watch?v=tF_0X6CKJd8")
     # Fin Dev Plugins
     # Llamada de plugins
-    
+
     # Fin llamada de plugins
     else:
         print("ERROR: El comando no es valido")
