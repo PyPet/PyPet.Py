@@ -4,5 +4,5 @@ Darle de comer = eat
 Cambiar configuracion = config
 
 MEMES (EDICION LIMITADA):
-mm:calb = Programar un poco
-mm:sin = Dormir en el nether
+Programar un poco = mm:calb
+Dormir en el nether = mm:sin
