@@ -6,7 +6,7 @@ import webbrowser  # Abrir sitios web
 import pygame  # Sonido
 import sentry_sdk  # RAE-PTrue
 import yaml  # Config
-def clear(): system("cls")  # Clear - Win: "cls" Linux/Mac: "clear"
+def clear(): os.system("cls")  # Clear - Win: "cls" Linux/Mac: "clear"
 # Imports de plugins
 # ej: import <Plugin>
 
