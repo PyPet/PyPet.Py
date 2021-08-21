@@ -1,4 +1,5 @@
-# PyPet - Una mascota virtual - BETA
+# Desabilitado, usar [PyPetJS](https://github.com/PyPet/PyPetJS)
+## PyPet - Una mascota virtual - BETA
 
 [![codebeat badge](https://codebeat.co/badges/33d3415a-a3d9-48cd-a586-f6485b778708)](https://codebeat.co/projects/github-com-gameme10-pypet-main)
 
