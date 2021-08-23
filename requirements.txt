@@ -1,3 +1,0 @@
-sentry_sdk
-pygame
-webbrowser

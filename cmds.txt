@@ -1,8 +1,0 @@
-Ir a dormir = sleep
-Salir = exit
-Darle de comer = eat
-Cambiar configuracion = config
-
-MEMES (EDICION LIMITADA):
-Programar un poco = mm:calb
-Dormir en el nether = mm:sin
