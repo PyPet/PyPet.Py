@@ -3,24 +3,25 @@ import os
 import sys
 
 def game(fs = 0):
-    fps = 30
+    fps = 10
     pygame.init()
-    size = 480, 320
+    size = 432, 288
+    win = pygame.display.set_mode(size, fs, 32)
     pygame.display.set_caption("PyPet.py")
     WHITE = 255, 255, 255
     BG_LOOP_IMG = pygame.image.load(os.path.join("assets", "bg-loop.png"))
     bg = pygame.transform.scale(BG_LOOP_IMG, size)
-    win = pygame.display.set_mode(size, fs, 32)
 
 
-    width = -480
+    width = 432
     i = 0
     i2=True
     run = True
     clock = pygame.time.Clock()
 
     pet_IMG = pygame.image.load(os.path.join("assets", "pet.png"))
-    pet2 = pygame.transform.scale(pet_IMG, (110,100))
+    pet3 = pygame.transform.scale(pet_IMG, (110,100))
+    pet2=pygame.transform.flip(pet3, True, False)
     while run:
         clock.tick(fps)
         for event in pygame.event.get():
@@ -35,15 +36,13 @@ def game(fs = 0):
         if i == -width:
             win.blit(bg, (width+i, 0))
             i = 0
-        i += 5
+        i -= 8
         if i2 == True:
             i2=False
-            pet = win.blit(pet2, (200, 215))
-            clock.tick(10)
+            pet = win.blit(pet2, (size[0]/2, 175))
         else:
             i2=True
-            pet = win.blit(pet2, (200, 210))
-            clock.tick(10)
+            pet = win.blit(pet2, (size[0]/2, 170))
         pygame.display.update()
 
 if __name__ == '__main__':
