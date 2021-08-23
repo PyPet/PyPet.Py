@@ -36,7 +36,7 @@ def game(fs = 0):
         if i == -width:
             win.blit(bg, (width+i, 0))
             i = 0
-        i -= 8
+        i -= 4
         if i2 == True:
             i2=False
             pet = win.blit(pet2, (size[0]/2, 175))
