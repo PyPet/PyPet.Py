@@ -13,22 +13,21 @@ def game(fs = 0):
     bg = pygame.transform.scale(BG_LOOP_IMG, size)
 
 
-    width = 432
+    width, height = size
     i = 0
     i2=True
     run = True
     clock = pygame.time.Clock()
-
+    # light shade of the button
+    color_light = (231, 76, 60)
+    color_white = (236, 240, 241)
+    # dark shade of the button
+    color_dark = (192, 57, 43)
     pet_IMG = pygame.image.load(os.path.join("assets", "pet.png"))
     pet3 = pygame.transform.scale(pet_IMG, (110,100))
     pet2=pygame.transform.flip(pet3, True, False)
     while run:
         clock.tick(fps)
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                run = False
-            if event.type == pygame.KEYDOWN and event.key ==  pygame.K_F10:
-                run=False
         win.fill((0, 0, 0))
         # Create looping background
         win.blit(bg, (i, 0))
@@ -39,15 +38,33 @@ def game(fs = 0):
         i -= 4
         if i2 == True:
             i2=False
-            pet = win.blit(pet2, (size[0]/2, 175))
+            win.blit(pet2, (size[0]/2, 175))
         else:
             i2=True
-            pet = win.blit(pet2, (size[0]/2, 170))
+            win.blit(pet2, (size[0]/2, 170))
+        smallfont = pygame.font.Font(os.path.join("assets", "font.ttf"),25)
+        text = smallfont.render('Salir' , True , color_white)
+        mouse = pygame.mouse.get_pos()
+        if width/10 <= mouse[0] <= width/10+140 and height/10 <= mouse[1] <= height/10+40:
+            pygame.draw.rect(win,color_light,[width/10,height/10,140,40])
+          
+        else:
+            pygame.draw.rect(win,color_dark,[width/10,height/10,140,40])
+        win.blit(text , (width/10+20,height/10+5))
         pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+            if event.type == pygame.KEYDOWN and event.key ==  pygame.K_F10:
+                run=False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if width/10 <= mouse[0] <= width/10+140 and height/10 <= mouse[1] <= height/10+40:
+                    pygame.quit()
 
 if __name__ == '__main__':
-    try:
-        print("ARGS: " + sys.argv[1])
-        if sys.argv[1] == "--pypetDIY": game(-2147483648)
-    except:
-        game(0)
+    try: 
+        game()
+    except Exception as e:
+        print("""-- Ha ocurrido el siguiente error --
+-- Puedes ignorar el error, a vezes pasa al cerrar --""")
+        print(e)
