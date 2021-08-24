@@ -5,7 +5,7 @@
 Esta rama se unirá con Main
 
 ## Requisitos:
-* Python 3
+* Python (3.9.3)
 * pygame (2.0.0):
 ```
 python3 -m pip install pygame==2.0.0
