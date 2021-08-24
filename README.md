@@ -4,7 +4,8 @@
 
 Esta rama se unirá con Main
 
-## Requisitos:
+## Requisitos
+
 * Python (**3.9.3**)
 * pygame (**2.0.0**):
 ```
