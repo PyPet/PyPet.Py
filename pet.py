@@ -2,11 +2,11 @@ import pygame
 import os
 import sys
 
-def game(fs = 0):
+def game():
     fps = 10
     pygame.init()
     size = 432, 288
-    win = pygame.display.set_mode(size, fs, 32)
+    win = pygame.display.set_mode(size)
     pygame.display.set_caption("PyPet.py")
     WHITE = 255, 255, 255
     BG_LOOP_IMG = pygame.image.load(os.path.join("assets", "bg-loop.png"))
