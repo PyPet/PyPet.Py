@@ -1,0 +1,6 @@
+error: |
+  ------------------------------------------------------
+  --          Ha ocurrido el siguiente error          --
+  -- Puedes ignorar el error, a vezes pasa al cerrar. --
+  ------------------------------------------------------
+exitBtn: "Salir"

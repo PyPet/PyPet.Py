@@ -1,0 +1,7 @@
+error: |
+  ---------------------------------------------
+  --         An error has appeared           --
+  --       You can ignore the error,         --
+  --    sometimesit happens when closing.    --
+  ---------------------------------------------
+exitBtn: "Exit"
